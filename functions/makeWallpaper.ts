@@ -13,14 +13,13 @@ exports.handler = async function (event, context, callback) {
       body: "add /imageurl & try again ....",
     });
   }
+  callback(null, {
+    statusCode: 200,
+    body: "drum",
+  });
   try {
     console.log("got it....");
     const output = path.basename(url, ".jpg");
-    callback(null, {
-      statusCode: 200,
-      body: "drum",
-    });
-
     const promises = [];
     for (var i = 0; i <= 5; i++) {
       promises.push(filterImageFromURL(url, i));
